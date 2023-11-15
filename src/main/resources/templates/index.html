@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+  <h1>Main page</h1>
+  <form action="#" th:action="@{/addTask}" th:object="${task}" method="post">
+      <label for="name">Name</label>
+      <input type="text" th:field="*{name}" id="name" placeholder="Name">
+      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+      <input type="submit" value="Add Task">
+  </form>
+  <h2 th:each="task : ${tasks}">
+      <h3 th:text="${task}"></h3>
+  </h2>
+</body>
+</html>
